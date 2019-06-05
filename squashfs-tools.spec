@@ -4,7 +4,7 @@
 #
 Name     : squashfs-tools
 Version  : 4.3
-Release  : 2
+Release  : 3
 URL      : http://http.debian.net/debian/pool/main/s/squashfs-tools/squashfs-tools_4.3.orig.tar.gz
 Source0  : http://http.debian.net/debian/pool/main/s/squashfs-tools/squashfs-tools_4.3.orig.tar.gz
 Summary  : No detailed summary available
