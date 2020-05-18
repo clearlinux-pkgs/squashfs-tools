@@ -4,7 +4,7 @@
 #
 Name     : squashfs-tools
 Version  : 4.4
-Release  : 6
+Release  : 7
 URL      : https://mirrors.kernel.org/debian/pool/main/s/squashfs-tools/squashfs-tools_4.4.orig.tar.gz
 Source0  : https://mirrors.kernel.org/debian/pool/main/s/squashfs-tools/squashfs-tools_4.4.orig.tar.gz
 Summary  : No detailed summary available
@@ -16,6 +16,7 @@ BuildRequires : lz4-dev
 BuildRequires : lzo-dev
 BuildRequires : xz-dev
 BuildRequires : zlib-dev
+Patch1: backport-gcc10.patch
 
 %description
 GitHub
@@ -43,17 +44,18 @@ license components for the squashfs-tools package.
 %prep
 %setup -q -n squashfs-tools-4.4
 cd %{_builddir}/squashfs-tools-4.4
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572563792
+export SOURCE_DATE_EPOCH=1589808951
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 pushd squashfs-tools
 make  %{?_smp_mflags}  LZO_SUPPORT=1 LZ4_SUPPORT=1 XZ_SUPPORT=1
@@ -61,7 +63,7 @@ popd
 
 
 %install
-export SOURCE_DATE_EPOCH=1572563792
+export SOURCE_DATE_EPOCH=1589808951
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squashfs-tools
 cp %{_builddir}/squashfs-tools-4.4/COPYING %{buildroot}/usr/share/package-licenses/squashfs-tools/4cc77b90af91e615a64ae04893fdffa7939db84c
