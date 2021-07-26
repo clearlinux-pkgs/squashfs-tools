@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Patrick McCarty <patrick.mccarty@intel.com>
+Date: Mon, 26 Jul 2021 11:23:41 -0700
+Subject: [PATCH] Fix DESTDIR-style install
+
+The makefiles don't support DESTDIR, so fix up a couple symlink targets to not
+point to the installation directory under %{buildroot}.
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ squashfs-tools/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/squashfs-tools/Makefile b/squashfs-tools/Makefile
+index 5795d0d..998c5fd 100755
+--- a/squashfs-tools/Makefile
++++ b/squashfs-tools/Makefile
+@@ -406,5 +406,5 @@ install: mksquashfs unsquashfs
+ 	mkdir -p $(INSTALL_DIR)
+ 	cp mksquashfs $(INSTALL_DIR)
+ 	cp unsquashfs $(INSTALL_DIR)
+-	ln -fs $(INSTALL_DIR)/unsquashfs $(INSTALL_DIR)/sqfscat
+-	ln -fs $(INSTALL_DIR)/mksquashfs $(INSTALL_DIR)/sqfstar
++	ln -fs unsquashfs $(INSTALL_DIR)/sqfscat
++	ln -fs mksquashfs $(INSTALL_DIR)/sqfstar
