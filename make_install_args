@@ -1,1 +1,1 @@
-INSTALL_DIR=%{buildroot}/usr/bin
+INSTALL_PREFIX=%{buildroot}/usr INSTALL_DIR=%{buildroot}/usr/bin INSTALL_MANPAGES_DIR=%{buildroot}/usr/share/man/man1
