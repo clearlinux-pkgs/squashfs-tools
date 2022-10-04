@@ -4,7 +4,7 @@
 #
 Name     : squashfs-tools
 Version  : 4.5.1
-Release  : 10
+Release  : 11
 URL      : https://mirrors.kernel.org/debian/pool/main/s/squashfs-tools/squashfs-tools_4.5.1.orig.tar.gz
 Source0  : https://mirrors.kernel.org/debian/pool/main/s/squashfs-tools/squashfs-tools_4.5.1.orig.tar.gz
 Summary  : No detailed summary available
@@ -58,22 +58,22 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1648486880
+export SOURCE_DATE_EPOCH=1664906264
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 pushd squashfs-tools
 make  %{?_smp_mflags}  LZO_SUPPORT=1 LZ4_SUPPORT=1 XZ_SUPPORT=1
 popd
 
 
 %install
-export SOURCE_DATE_EPOCH=1648486880
+export SOURCE_DATE_EPOCH=1664906264
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squashfs-tools
-cp %{_builddir}/squashfs-tools-4.5.1/COPYING %{buildroot}/usr/share/package-licenses/squashfs-tools/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/squashfs-tools-%{version}/COPYING %{buildroot}/usr/share/package-licenses/squashfs-tools/4cc77b90af91e615a64ae04893fdffa7939db84c || :
 pushd squashfs-tools
 %make_install INSTALL_PREFIX=%{buildroot}/usr INSTALL_DIR=%{buildroot}/usr/bin INSTALL_MANPAGES_DIR=%{buildroot}/usr/share/man/man1
 popd
