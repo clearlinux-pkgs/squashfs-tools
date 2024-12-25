@@ -5,3 +5,4 @@ lzo-dev
 xz-dev
 zlib-dev
 help2man
+zstd-dev
