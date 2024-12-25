@@ -7,7 +7,7 @@
 #
 Name     : squashfs-tools
 Version  : 4.6.1
-Release  : 13
+Release  : 14
 URL      : https://mirrors.kernel.org/debian/pool/main/s/squashfs-tools/squashfs-tools_4.6.1.orig.tar.gz
 Source0  : https://mirrors.kernel.org/debian/pool/main/s/squashfs-tools/squashfs-tools_4.6.1.orig.tar.gz
 Summary  : No detailed summary available
@@ -65,7 +65,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1735154883
+export SOURCE_DATE_EPOCH=1735155022
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -79,7 +79,7 @@ ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 pushd squashfs-tools
 export GOAMD64=v2
-make  %{?_smp_mflags}  LZO_SUPPORT=1 LZ4_SUPPORT=1 XZ_SUPPORT=1
+make  %{?_smp_mflags}  LZO_SUPPORT=1 LZ4_SUPPORT=1 XZ_SUPPORT=1 ZSTD_SUPPORT=1
 popd
 
 
@@ -95,7 +95,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1735154883
+export SOURCE_DATE_EPOCH=1735155022
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/squashfs-tools
 cp %{_builddir}/squashfs-tools-%{version}/COPYING %{buildroot}/usr/share/package-licenses/squashfs-tools/4cc77b90af91e615a64ae04893fdffa7939db84c || :
